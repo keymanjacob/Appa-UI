@@ -1,5 +1,5 @@
 {
-  "name": "component-factory",
+  "name": "@keymanjacob/appa-ui",
   "version": "0.1.0",
   "description": "Storybook-powered component library extracted from enterprise webapps",
   "type": "module",
