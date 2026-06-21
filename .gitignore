@@ -10,6 +10,9 @@ storybook-static/
 # Mac OS
 .DS_Store
 
+#purpose
+01-extraction-plan.md
+
 # Logs
 npm-debug.log*
 yarn-debug.log*
