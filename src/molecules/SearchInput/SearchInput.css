@@ -1,0 +1,72 @@
+/* ── cf-search-input (base) ─────────────────────────────────── */
+
+.cf-search-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--cf-color-bg-tertiary, #2a2a2a);
+  border: 1px solid var(--cf-color-border, #333333);
+  border-radius: var(--cf-radius-md, 8px);
+  transition: border-color var(--cf-transition-fast, 0.15s ease),
+              box-shadow var(--cf-transition-fast, 0.15s ease);
+}
+
+.cf-search-input:focus-within {
+  border-color: var(--cf-color-interactive, #3b82f6);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+/* ── Search icon ───────────────────────────────────────────── */
+
+.cf-search-input__icon {
+  position: absolute;
+  left: var(--cf-spacing-sm, 1rem);
+  width: 18px;
+  height: 18px;
+  color: var(--cf-color-text-tertiary, #666666);
+  pointer-events: none;
+}
+
+/* ── Input field ───────────────────────────────────────────── */
+
+.cf-search-input__field {
+  flex: 1;
+  padding: var(--cf-spacing-xs, 0.5rem) var(--cf-spacing-sm, 1rem);
+  padding-left: 2.25rem;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--cf-color-text-primary, #ffffff);
+  font-family: var(--cf-font-primary, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+  font-size: 0.875rem;
+}
+
+.cf-search-input__field::placeholder {
+  color: var(--cf-color-text-tertiary, #666666);
+}
+
+/* ── Clear button ──────────────────────────────────────────── */
+
+.cf-search-input__clear {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px;
+  margin-right: var(--cf-spacing-xs, 0.5rem);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--cf-color-text-tertiary, #666666);
+  border-radius: 50%;
+  transition: color var(--cf-transition-fast, 0.15s ease),
+              background var(--cf-transition-fast, 0.15s ease);
+}
+
+.cf-search-input__clear:hover {
+  color: var(--cf-color-text-primary, #ffffff);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.cf-search-input__clear svg {
+  width: 16px;
+  height: 16px;
+}

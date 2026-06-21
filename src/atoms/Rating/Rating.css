@@ -1,0 +1,10 @@
+/* ── cf-rating (base) ──────────────────────────────────────── */
+
+.cf-rating {
+  display: inline-flex;
+  gap: 2px;
+}
+
+.cf-rating__star {
+  transition: transform var(--cf-transition-fast, 0.15s ease);
+}

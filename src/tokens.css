@@ -1,0 +1,42 @@
+/* Component Factory Design Tokens — CSS custom property aliases */
+
+:root {
+  --cf-color-bg-primary: #0a0a0a;
+  --cf-color-bg-secondary: #1a1a1a;
+  --cf-color-bg-tertiary: #2a2a2a;
+  --cf-color-surface: #1a1a1a;
+  --cf-color-surface-elevated: #2a2a2a;
+
+  --cf-color-text-primary: #ffffff;
+  --cf-color-text-secondary: #a0a0a0;
+  --cf-color-text-tertiary: #666666;
+
+  --cf-color-brand-primary: #d4af37;
+  --cf-color-brand-primary-light: #e5c158;
+
+  --cf-color-interactive: #3b82f6;
+  --cf-color-interactive-hover: #2563eb;
+  --cf-color-status-success: #10b981;
+  --cf-color-status-error: #ef4444;
+  --cf-color-status-warning: #f59e0b;
+
+  --cf-color-border: #333333;
+  --cf-color-border-light: rgba(255, 255, 255, 0.1);
+
+  --cf-radius-sm: 4px;
+  --cf-radius-md: 8px;
+  --cf-radius-lg: 16px;
+  --cf-radius-xl: 24px;
+
+  --cf-font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --cf-font-display: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --cf-spacing-xs: 0.5rem;
+  --cf-spacing-sm: 1rem;
+  --cf-spacing-md: 2rem;
+  --cf-spacing-lg: 4rem;
+  --cf-spacing-xl: 6rem;
+
+  --cf-transition-fast: 0.15s ease;
+  --cf-transition-base: 0.3s ease;
+}

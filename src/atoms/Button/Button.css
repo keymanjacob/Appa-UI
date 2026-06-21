@@ -1,0 +1,83 @@
+/* ── cf-button (base) ───────────────────────────────────────── */
+
+.cf-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--cf-spacing-xs, 0.5rem);
+  border: none;
+  cursor: pointer;
+  font-family: var(--cf-font-primary, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+  font-weight: 600;
+  line-height: 1;
+  transition: all var(--cf-transition-fast, 0.15s ease);
+  white-space: nowrap;
+}
+
+.cf-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Variants ──────────────────────────────────────────────── */
+
+/* Primary — brand-colored filled button */
+.cf-button--primary {
+  background: var(--cf-color-brand-primary, #d4af37);
+  color: var(--cf-color-text-primary, #0a0a0a);
+}
+
+.cf-button--primary:hover:not(:disabled) {
+  background: var(--cf-color-brand-primary-light, #e5c158);
+  transform: translateY(-1px);
+}
+
+/* Secondary — outlined button with interactive border */
+.cf-button--secondary {
+  background: transparent;
+  color: var(--cf-color-interactive, #3b82f6);
+  border: 1px solid var(--cf-color-interactive, #3b82f6);
+}
+
+.cf-button--secondary:hover:not(:disabled) {
+  background: var(--cf-color-interactive, #3b82f6);
+  color: #fff;
+}
+
+/* Ghost — text-only, minimal visual weight */
+.cf-button--ghost {
+  background: transparent;
+  color: var(--cf-color-text-secondary, #a0a0a0);
+}
+
+.cf-button--ghost:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--cf-color-text-primary, #ffffff);
+}
+
+/* ── Sizes ─────────────────────────────────────────────────── */
+
+.cf-button--sm {
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  border-radius: var(--cf-radius-sm, 4px);
+}
+
+.cf-button--md {
+  padding: 8px 20px;
+  font-size: 0.875rem;
+  border-radius: var(--cf-radius-md, 8px);
+}
+
+.cf-button--lg {
+  padding: 12px 32px;
+  font-size: 1rem;
+  border-radius: var(--cf-radius-lg, 16px);
+}
+
+/* ── Full-width variant ────────────────────────────────────── */
+
+.cf-button--full {
+  width: 100%;
+}

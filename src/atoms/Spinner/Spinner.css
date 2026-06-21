@@ -1,0 +1,238 @@
+/* LoadingSpinner Component Styles */
+
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  --spinner-color: var(--color-primary, #3b82f6);
+}
+
+/* Animation wrapper - isolates rotating elements from text */
+.loading-spinner__animation-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ========================================
+   SIZES
+   ======================================== */
+.loading-spinner--small {
+  --spinner-size: 24px;
+  --label-size: 0.75rem;
+}
+
+.loading-spinner--medium {
+  --spinner-size: 40px;
+  --label-size: 0.875rem;
+}
+
+.loading-spinner--large {
+  --spinner-size: 64px;
+  --label-size: 1rem;
+}
+
+/* ========================================
+   DEFAULT RING SPINNER
+   ======================================== */
+.loading-spinner__ring {
+  width: var(--spinner-size);
+  height: var(--spinner-size);
+  position: relative;
+}
+
+.loading-spinner__ring-inner {
+  width: 100%;
+  height: 100%;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top-color: var(--spinner-color);
+  border-radius: 50%;
+  animation: spinnerRotate 0.8s linear infinite;
+}
+
+@keyframes spinnerRotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ========================================
+   DOTS SPINNER
+   ======================================== */
+.loading-spinner__dots {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.loading-spinner__dot {
+  width: calc(var(--spinner-size) / 4);
+  height: calc(var(--spinner-size) / 4);
+  background-color: var(--spinner-color);
+  border-radius: 50%;
+  animation: dotBounce 1.4s ease-in-out infinite both;
+}
+
+.loading-spinner__dot:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.loading-spinner__dot:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+.loading-spinner__dot:nth-child(3) {
+  animation-delay: 0s;
+}
+
+@keyframes dotBounce {
+  0%, 80%, 100% {
+    transform: scale(0.6);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ========================================
+   PULSE SPINNER
+   ======================================== */
+.loading-spinner__pulse {
+  width: var(--spinner-size);
+  height: var(--spinner-size);
+  position: relative;
+  /* Prevent the container from rotating */
+  transform: none !important;
+}
+
+.loading-spinner__pulse-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--spinner-color);
+  border-radius: 50%;
+  animation: pulseRing 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+.loading-spinner__pulse-ring:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+@keyframes pulseRing {
+  0% {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* ========================================
+   MODERN RING (SVG)
+   ======================================== */
+.loading-spinner__modern-ring {
+  width: var(--spinner-size);
+  height: var(--spinner-size);
+}
+
+.loading-spinner__modern-ring svg {
+  width: 100%;
+  height: 100%;
+  /* Remove rotation from SVG container */
+  animation: none;
+}
+
+.loading-spinner__track {
+  stroke: rgba(255, 255, 255, 0.1);
+}
+
+.loading-spinner__progress {
+  stroke: var(--spinner-color);
+  stroke-linecap: round;
+  stroke-dasharray: 125.6;
+  stroke-dashoffset: 94.2;
+  /* Use only dash animation, no rotation */
+  animation: ringDash 1.4s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* Separate rotation animation for the SVG element */
+.loading-spinner__modern-ring {
+  animation: spinnerRotate 1.4s linear infinite;
+}
+
+/* Dash animation without rotation */
+@keyframes ringDash {
+  0% {
+    stroke-dashoffset: 94.2;
+  }
+  50% {
+    stroke-dashoffset: 31.4;
+  }
+  100% {
+    stroke-dashoffset: 94.2;
+  }
+}
+
+/* ========================================
+   LABEL
+   ======================================== */
+.loading-spinner__label {
+  font-size: var(--label-size);
+  color: #ffffff;
+  text-align: center;
+  letter-spacing: 0.02em;
+  font-weight: 500;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  /* Ensure label never rotates */
+  transform: none !important;
+  animation: none !important;
+}
+
+/* ========================================
+   OVERLAY MODE
+   ======================================== */
+.loading-spinner__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 9999;
+}
+
+/* ========================================
+   REDUCED MOTION
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+  .loading-spinner__ring-inner,
+  .loading-spinner__dot,
+  .loading-spinner__pulse-ring,
+  .loading-spinner__modern-ring svg,
+  .loading-spinner__progress {
+    animation: none;
+  }
+  
+  .loading-spinner__ring-inner {
+    border-color: var(--spinner-color);
+  }
+  
+  .loading-spinner__dot {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

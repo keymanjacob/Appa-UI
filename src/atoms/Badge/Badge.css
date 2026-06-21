@@ -1,0 +1,49 @@
+/* ── cf-badge (base) ───────────────────────────────────────── */
+
+.cf-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 8px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  line-height: 1.4;
+  border-radius: var(--cf-radius-sm, 4px);
+  white-space: nowrap;
+}
+
+/* ── Pill (count) variant ──────────────────────────────────── */
+
+.cf-badge--pill {
+  padding: 2px 6px;
+  border-radius: 999px;
+  min-width: 18px;
+  height: 18px;
+}
+
+/* ── Variants ──────────────────────────────────────────────── */
+
+.cf-badge--default {
+  background: var(--cf-color-text-tertiary, #666666);
+  color: #fff;
+}
+
+.cf-badge--success {
+  background: var(--cf-color-status-success, #10b981);
+  color: #fff;
+}
+
+.cf-badge--error {
+  background: var(--cf-color-status-error, #ef4444);
+  color: #fff;
+}
+
+.cf-badge--warning {
+  background: var(--cf-color-status-warning, #f59e0b);
+  color: #0a0a0a;
+}
+
+.cf-badge--info {
+  background: var(--cf-color-interactive, #3b82f6);
+  color: #fff;
+}

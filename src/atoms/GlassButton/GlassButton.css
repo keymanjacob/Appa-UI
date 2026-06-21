@@ -1,0 +1,163 @@
+/* ─── Liquid Glass Button ─────────────────────────────────────────────────────
+   Apple iOS 26 / visionOS style translucent material.
+   New for component-factory (not extracted from a source app). */
+
+.cf-glass-btn {
+  --cf-glass-bg: rgba(255, 255, 255, 0.14);
+  --cf-glass-bg-hover: rgba(255, 255, 255, 0.22);
+  --cf-glass-fg: #fff;
+  --cf-glass-blur: 14px;
+
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+
+  margin: 0;
+  border: none;
+  border-radius: 999px;
+  padding: 0.7em 1.4em;
+
+  font-family: var(--font-primary, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+  font-size: 1rem;
+  font-weight: 590;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  color: var(--cf-glass-fg);
+  white-space: nowrap;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+
+  background: var(--cf-glass-bg);
+  -webkit-backdrop-filter: blur(var(--cf-glass-blur)) saturate(180%);
+  backdrop-filter: blur(var(--cf-glass-blur)) saturate(180%);
+
+  /* Lift shadow + inner edge highlight ring + top/bottom sheen */
+  box-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.06),
+    0 8px 24px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.12),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+
+  transition:
+    transform 0.28s cubic-bezier(0.2, 0.9, 0.3, 1.25),
+    box-shadow 0.28s ease,
+    background-color 0.28s ease;
+}
+
+/* Specular highlight — light pooling at the top edge of the glass */
+.cf-glass-btn__sheen {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 100% at 50% -20%, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0) 55%),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0) 40%);
+  opacity: 0.9;
+  transition: opacity 0.28s ease;
+}
+
+.cf-glass-btn__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  z-index: 1;
+}
+
+.cf-glass-btn__icon {
+  display: inline-flex;
+  align-items: center;
+  font-size: 1.1em;
+}
+
+/* ── Interaction (springy) ──────────────────────────────────── */
+.cf-glass-btn:hover {
+  background: var(--cf-glass-bg-hover);
+  transform: translateY(-1px) scale(1.02);
+}
+
+.cf-glass-btn:hover .cf-glass-btn__sheen {
+  opacity: 1;
+}
+
+.cf-glass-btn:active {
+  transform: scale(0.96);
+  transition-duration: 0.08s;
+}
+
+.cf-glass-btn:focus-visible {
+  outline: none;
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.14),
+    0 0 0 3px rgba(120, 170, 255, 0.65);
+}
+
+.cf-glass-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+/* ── Variants ───────────────────────────────────────────────── */
+
+/* Clear: thinner, more see-through — for media/photo backgrounds */
+.cf-glass-btn--clear {
+  --cf-glass-bg: rgba(255, 255, 255, 0.08);
+  --cf-glass-bg-hover: rgba(255, 255, 255, 0.16);
+  --cf-glass-blur: 8px;
+}
+
+/* Tinted: colored glass driven by --cf-glass-tint */
+.cf-glass-btn--tinted {
+  --cf-glass-tint: #3b82f6;
+  --cf-glass-bg: color-mix(in srgb, var(--cf-glass-tint) 60%, transparent);
+  --cf-glass-bg-hover: color-mix(in srgb, var(--cf-glass-tint) 74%, transparent);
+  color: #fff;
+  box-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.08),
+    0 10px 26px color-mix(in srgb, var(--cf-glass-tint) 42%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.12),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.22);
+}
+
+/* ── Sizes ──────────────────────────────────────────────────── */
+.cf-glass-btn--sm {
+  font-size: 0.8125rem;
+  padding: 0.55em 1.1em;
+}
+
+.cf-glass-btn--md {
+  font-size: 1rem;
+}
+
+.cf-glass-btn--lg {
+  font-size: 1.1875rem;
+  padding: 0.8em 1.7em;
+}
+
+.cf-glass-btn--full {
+  display: flex;
+  width: 100%;
+}
+
+/* ── Reduced motion ─────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .cf-glass-btn {
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .cf-glass-btn:hover,
+  .cf-glass-btn:active {
+    transform: none;
+  }
+}

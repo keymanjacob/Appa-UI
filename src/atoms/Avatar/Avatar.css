@@ -1,0 +1,38 @@
+/* ── cf-avatar (base) ──────────────────────────────────────── */
+
+.cf-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  background: var(--cf-color-brand-primary, #d4af37);
+  color: var(--cf-color-bg-primary, #0a0a0a);
+}
+
+/* ── Shapes ─────────────────────────────────────────────────── */
+
+.cf-avatar--circle {
+  border-radius: 50%;
+}
+
+.cf-avatar--square {
+  border-radius: var(--cf-radius-md, 8px);
+}
+
+.cf-avatar--image {
+  object-fit: cover;
+}
+
+/* ── Sizes ─────────────────────────────────────────────────── */
+
+.cf-avatar--sm { width: 32px; height: 32px; font-size: 0.7rem; }
+.cf-avatar--md { width: 48px; height: 48px; font-size: 1rem;   }
+.cf-avatar--lg { width: 64px; height: 64px; font-size: 1.25rem; }
+.cf-avatar--xl { width: 96px; height: 96px; font-size: 2rem;   }
+
+/* ── Image variant sizes (override background color) ───────── */
+
+.cf-avatar--image.cf-avatar--sm { background: transparent; }
+.cf-avatar--image.cf-avatar--md { background: transparent; }
+.cf-avatar--image.cf-avatar--lg { background: transparent; }
+.cf-avatar--image.cf-avatar--xl { background: transparent; }

@@ -1,0 +1,169 @@
+/* ProgressBar Component Styles */
+
+.progress-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  --progress-color: var(--color-primary, #3b82f6);
+  --progress-secondary-color: #60a5fa;
+  --progress-track-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ========================================
+   SIZES
+   ======================================== */
+.progress-bar--small {
+  --bar-height: 4px;
+  --label-size: 0.75rem;
+}
+
+.progress-bar--medium {
+  --bar-height: 8px;
+  --label-size: 0.875rem;
+}
+
+.progress-bar--large {
+  --bar-height: 12px;
+  --label-size: 1rem;
+}
+
+/* ========================================
+   TRACK
+   ======================================== */
+.progress-bar__track {
+  width: 100%;
+  height: var(--bar-height);
+  background: var(--progress-track-color);
+  border-radius: calc(var(--bar-height) / 2);
+  overflow: hidden;
+  position: relative;
+}
+
+/* ========================================
+   FILL - LINEAR VARIANT
+   ======================================== */
+.progress-bar--linear .progress-bar__fill {
+  height: 100%;
+  background: var(--progress-color);
+  border-radius: calc(var(--bar-height) / 2);
+  transition: width 0.3s ease;
+}
+
+.progress-bar--animated.progress-bar--linear .progress-bar__fill {
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ========================================
+   FILL - GRADIENT VARIANT
+   ======================================== */
+.progress-bar--gradient .progress-bar__fill {
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--progress-color) 0%,
+    var(--progress-secondary-color) 50%,
+    var(--progress-color) 100%
+  );
+  background-size: 200% 100%;
+  border-radius: calc(var(--bar-height) / 2);
+  transition: width 0.3s ease;
+}
+
+.progress-bar--animated.progress-bar--gradient .progress-bar__fill {
+  animation: gradientShift 2s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ========================================
+   FILL - STRIPED VARIANT
+   ======================================== */
+.progress-bar--striped .progress-bar__fill {
+  height: 100%;
+  background: repeating-linear-gradient(
+    45deg,
+    var(--progress-color),
+    var(--progress-color) 10px,
+    var(--progress-secondary-color) 10px,
+    var(--progress-secondary-color) 20px
+  );
+  background-size: 28.28px 100%;
+  border-radius: calc(var(--bar-height) / 2);
+  transition: width 0.3s ease;
+}
+
+.progress-bar--animated.progress-bar--striped .progress-bar__fill {
+  animation: stripedMove 1s linear infinite;
+}
+
+@keyframes stripedMove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 28.28px 0;
+  }
+}
+
+/* ========================================
+   INDETERMINATE MODE
+   ======================================== */
+.progress-bar--indeterminate .progress-bar__fill {
+  width: 30% !important;
+  animation: indeterminateSlide 1.5s ease-in-out infinite;
+}
+
+@keyframes indeterminateSlide {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(233%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* ========================================
+   LABEL
+   ======================================== */
+.progress-bar__label {
+  font-size: var(--label-size);
+  color: var(--color-text-secondary, #a0a0a0);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ========================================
+   GLOW EFFECT (for animated)
+   ======================================== */
+.progress-bar--animated .progress-bar__fill {
+  box-shadow: 0 0 8px var(--progress-color);
+}
+
+/* ========================================
+   REDUCED MOTION
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+  .progress-bar__fill {
+    transition: none !important;
+    animation: none !important;
+  }
+  
+  .progress-bar--indeterminate .progress-bar__fill {
+    width: 100% !important;
+    transform: none !important;
+  }
+}
